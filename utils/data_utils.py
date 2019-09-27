@@ -20,7 +20,8 @@ from utils.configuration import default_config as config
 scalar = None
 
 def prepare_dataset(X):
-    len_ = X.shape[0]
+    X = da.from_array(X, chunks=100)
+    #len_ = X.shape[0]
     shape_ = X.shape
 
     d = int(np.sqrt(X.flatten().reshape(X.shape[0], -1).shape[1]))
@@ -47,8 +48,8 @@ def prepare_dataset(X):
     else:
         scaler = MinMaxScaler()
         X = scaler.fit_transform(X.flatten().reshape(-1, 1).astype(np.float32)).reshape(X.shape)
-    print('Creating dask array ... ')
-    return da.from_array(X, chunks=100)#da.array(X)#
+    #print('Creating dask array ... ')
+    return X#da.array(X)#
 
 def process_data(X, y=None, test_size=0.2):
     if y is None:

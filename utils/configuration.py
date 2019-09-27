@@ -43,7 +43,7 @@ class default_config:
     tolerance = 1e-8
     min_lr = 1e-8
     epsilon = 1e-8
-    save_epoch = 10
+    save_epoch = 20
     colab_save = 30
     seeds = 987654321
 
@@ -74,9 +74,9 @@ class default_config:
 # # Embedding configuration
     n_components = 2
     n_cluster_dim = 10
-    perplexity = 20
+    perplexity = 30
     exaggeration = 50
-    df = 0.5
+    df = 1
     e_div_cost = Losses.KLD
     kernel_mode = Kernels.StudentT
 

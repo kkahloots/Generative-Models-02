@@ -75,7 +75,7 @@ class EmbeddingGraph(BaseGraph):
             self.embedding_loss = tf.add(tf.reduce_mean(self.e_divergence_cost), self.config.l2 * self.L2_loss, name='embedding_loss')
 
         with tf.variable_scope("optimizer", reuse=self.config.reuse):
-            self.optimizer = tf.train.GradientDescentOptimizer(self.lr)
+            self.optimizer = tf.train.AdamOptimizer(self.lr)
             self.train_step = self.optimizer.minimize(self.embedding_loss, global_step=self.global_step_tensor)
 
         self.losses = ['Embedding_loss', 'E_diverg_{}'.format(self.config.e_div_cost), 'Regul_L2']

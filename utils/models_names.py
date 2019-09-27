@@ -60,5 +60,6 @@ def get_model_name(model, config):
                      + 'lay' + str(config.num_layers) + '_' \
                      + 'df' + str(config.df).replace('.', '_') + '_' \
                      + 'nCom' + str(config.n_components) + '_' \
+                     + 'ker' + str(config.kernel_mode) + '_' \
                      + 'ediv' + str(config.e_div_cost)
         return model_name
