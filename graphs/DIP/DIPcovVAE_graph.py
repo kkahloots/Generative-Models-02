@@ -18,7 +18,7 @@ This is the Main DIPcovVAEGraph.
 class DIPcovVAEGraph(BaseGraph):
 
     def extra_sittings(self):
-        self.d = self.d_factor * self.config.lambda_d
+        self.d = self.config.d_factor * self.config.lambda_d
 
     def create_inputs(self):
         with tf.variable_scope('inputs', reuse=self.config.reuse):
@@ -202,5 +202,5 @@ class DIPcovVAEGraph(BaseGraph):
         # mu = z_mean is [batch_size, num_latent]
         # Compute cov_p(x) [mu(x)] = E[mu*mu^T] - E[mu]E[mu]^T]
         cov_dip_regularizer = self.regularize_diag_off_diag_dip(cov_latent_mean, self.config.lambda_d, self.d)
-
+        
         return cov_dip_regularizer
